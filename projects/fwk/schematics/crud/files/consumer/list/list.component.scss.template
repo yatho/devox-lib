@@ -1,0 +1,15 @@
+mat-icon {
+    cursor: pointer;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    section.actions {
+        align-self: flex-end;
+
+        button[mat-fab] {
+            margin: 12px;
+        }
+    }
+}

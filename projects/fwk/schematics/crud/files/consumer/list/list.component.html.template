@@ -1,0 +1,62 @@
+<h1>
+    Liste des consumers
+</h1>
+
+<table mat-table [dataSource]="($consumers | async)??[]" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let consumer"> {{consumer.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="civility">
+        <th mat-header-cell *matHeaderCellDef> Civilité </th>
+        <td mat-cell *matCellDef="let consumer"> {{consumer.civility}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastname">
+        <th mat-header-cell *matHeaderCellDef> Nom </th>
+        <td mat-cell *matCellDef="let consumer"> {{consumer.lastname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="firstname">
+        <th mat-header-cell *matHeaderCellDef> Prénom </th>
+        <td mat-cell *matCellDef="let consumer"> {{consumer.firstname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let consumer"> {{consumer.email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> Téléphone </th>
+        <td mat-cell *matCellDef="let consumer"> {{consumer.phone}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef> Créé le </th>
+        <td mat-cell *matCellDef="let consumer"> {{consumer.createdAt | date: 'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="updatedAt">
+        <th mat-header-cell *matHeaderCellDef> Mis à jour le </th>
+        <td mat-cell *matCellDef="let consumer"> {{consumer.updatedAt | date: 'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let consumer"> 
+            <mat-icon (click)="edit(consumer)">edit</mat-icon>
+            <mat-icon (click)="delete(consumer.id)">delete</mat-icon>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<section class="actions">
+    <button mat-fab (click)="create()">
+        <mat-icon>add</mat-icon>
+    </button>
+</section>
