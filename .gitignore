@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+/projects/fwk/node_modules
+/projects/fwk/yarn.lock
