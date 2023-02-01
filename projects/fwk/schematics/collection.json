@@ -4,6 +4,11 @@
       "ng-add": {
         "description": "Add my library to the project.",
         "factory": "./ng-add/index#ngAdd"
+      },
+      "crud": {
+        "description": "Generate a crud in the project",
+        "schema": "./crud/schema.json",
+        "factory": "./crud/index#crudGenerator"
       }
     }
   }
