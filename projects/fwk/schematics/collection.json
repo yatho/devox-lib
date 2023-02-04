@@ -9,6 +9,10 @@
         "description": "Generate a crud in the project",
         "schema": "./crud/schema.json",
         "factory": "./crud/index#crudGenerator"
+      },
+      "ng-new": {
+        "description": "Generate a new project",
+        "factory": "./ng-new/index#ngNew"
       }
     }
   }
