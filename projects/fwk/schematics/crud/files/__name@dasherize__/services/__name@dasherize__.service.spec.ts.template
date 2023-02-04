@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ConsumerService } from './consumer.service';
+import { <%= classify(name) %>Service } from './<%= dasherize(name) %>.service';
 
-describe('ConsumerService', () => {
-  let service: ConsumerService;
+describe('<%= classify(name) %>Service', () => {
+  let service: <%= classify(name) %>Service;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ConsumerService);
+    service = TestBed.inject(<%= classify(name) %>Service);
   });
 
   it('should be created', () => {

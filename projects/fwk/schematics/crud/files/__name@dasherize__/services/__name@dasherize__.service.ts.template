@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CrudService } from 'fwk';
-import { Consumer } from '../models/Consumer';
+import { <%= classify(name) %> } from '../models/<%= classify(name) %>';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ConsumerService extends CrudService<number, Consumer> {
+export class <%= classify(name) %>Service extends CrudService<number, <%= classify(name) %>> {
   constructor(protected override http: HttpClient) { 
-    super('/api/consumers', http);
+    super('<%= path %>', http);
   }
 }

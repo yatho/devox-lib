@@ -27,7 +27,9 @@ export function crudGenerator(options: Schema): Rule {
                 classify: strings.classify,
                 dasherize: strings.dasherize,
                 capitalize: strings.capitalize,
-                name: options.name
+                lowercase: (str: string) => str.toLowerCase(),
+                name: options.name,
+                path: options.path
             }),
             move(normalize(path))
         ]);

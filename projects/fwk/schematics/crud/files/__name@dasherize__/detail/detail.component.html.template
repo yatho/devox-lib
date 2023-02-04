@@ -1,37 +1,14 @@
 <h1 *ngIf="isCreation else updateTitleTemplate">
-    Créer un consumer
+    Créer un <%= lowercase(name) %>
 </h1>
 
 <ng-template #updateTitleTemplate>
-    <h1>Mettre à jour un consumer</h1>
+    <h1>Mettre à jour un <%= lowercase(name) %></h1>
 </ng-template>
 
-<form [formGroup]="consumerForm" (ngSubmit)="save()">
-    <mat-form-field>
-        <mat-label>Civilité</mat-label>
-        <mat-select formControlName="civility">
-          <mat-option *ngFor="let civility of civilities" [value]="civility">
-            {{civility}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    <mat-form-field>
-        <mat-label>Nom</mat-label>
-        <input matInput placeholder="Nom" formControlName="lastname">
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Prénom</mat-label>
-        <input matInput placeholder="Prénom" formControlName="firstname">
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Email" formControlName="email">
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Téléphone</mat-label>
-        <input matInput placeholder="Téléphone" formControlName="phone">
-    </mat-form-field>
+<form [formGroup]="<%= lowercase(name) %>Form" (ngSubmit)="save()">
+    <!-- TODO : Faire le forumulaire -->
 
     <button mat-button type="button" (click)="cancel()">Annuler</button>
-    <button mat-raised-button color="primary" type="submit" [disabled]="consumerForm.invalid">Enregistrer</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="<%= lowercase(name) %>Form.invalid">Enregistrer</button>
 </form>
