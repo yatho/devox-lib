@@ -12,7 +12,8 @@
       },
       "ng-new": {
         "description": "Generate a new project",
-        "factory": "./ng-new/index#ngNew"
+        "factory": "./ng-new/index",
+        "schema": "../../../node_modules/@schematics/angular/ng-new/schema.json"
       }
     }
   }
