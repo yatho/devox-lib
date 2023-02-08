@@ -71,12 +71,6 @@ export default function (options: NgNewOptions): Rule {
     );
 
     // TODO : Proposer un seul et unique fichier schema.json avec uniquement ce qui est modifiable dans le ng-new
-    // TODO : Ajouter mes schematics à angular.json en tant que schematics par défault
-    // "cli": {
-    // "analytics": false,
-    // "schematicCollections": ["@schematics/angular", "fwk"]
-    //  }
-    // TODO : Ajouter l'appel aux schematics de material pour initialiser avec material ng-add
 
     return chain([
       mergeWith(
@@ -86,8 +80,20 @@ export default function (options: NgNewOptions): Rule {
         apply(url('./files'), [move(options.directory + '/src')]),
         MergeStrategy.Overwrite
       ),
+      externalSchematic('@angular/material', 'ng-add', {})
+      ,
       (tree: Tree) => {
         tree.delete(options.directory + '/src/app/app.module.ts');
+      },
+      (tree: Tree) => {
+        if(tree.exists(options.directory + '/angular.json')) {
+          const angularJson = JSON.parse(tree.read(options.directory + '/angular.json')!.toString());
+          angularJson.cli = {
+            analytics: false,
+            schematicCollections: ["@schematics/angular", "fwk"]
+          };
+          tree.overwrite(options.directory + '/angular.json', JSON.stringify(angularJson, null, 4));
+        }
       },
       (_host: Tree, context: SchematicContext) => {
         let packageTask;
